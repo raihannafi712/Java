@@ -3,7 +3,7 @@ public class lab_3 {
 
     // LAB 3
 
-    // TASK 5
+    // TASK 5odfspofsp
     public static void sumOddAppend(Node singly_head) {
         Node current=singly_head.next;
         Node prev=singly_head;
