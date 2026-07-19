@@ -103,10 +103,9 @@ public class HashTable {
 
 	//you need to COMPLETE this method
     //Hint: you may need to use Integer.parseInt() to convert from String to Integer
-    public String searchHashtable( Object[] keyValuePair ){
+    public String searchHashtable( Object[] keyValuePair ){                             /* Object array is holding string key in index 0 and value int in index 1 */
 
         String s_key = (String) keyValuePair[0];
-
         int idx = hashFunction(s_key);
 
         PairNode curr = ht[idx];
@@ -121,53 +120,6 @@ public class HashTable {
         }
 
         return "Not found";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        // // Extract the key we want to search for
-        // String searchKey = (String) keyValuePair[0];
-        
-        // // Hash Based Search: Get the exact index instantly
-        // int index = hashFunction(keyValuePair);
-        
-        // // Point current to the head of the chain at that exact bucket
-        // PairNode current = ht[index]; // Note: Change 'PairNode' to whatever your class is named (e.g., PairNode)
-
-        // // Traverse the linked list at this specific index
-        // while (current != null) {
-            
-        //     // Assuming your node stores the key in current.key. Adjust if it uses an array!
-        //     if (current.key.equals(searchKey)) {
-        //         return "Found"; 
-        //     }
-            
-        //     current = current.next;
-        // }
-
-        // // If the loop finishes and we haven't returned "Found", it doesn't exist
-  
         
     }
 
