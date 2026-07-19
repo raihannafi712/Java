@@ -389,6 +389,7 @@ public class singlyLinkedList {
         Node a = new Node(5);              /* Node class's new object */
         //Node a = 5;                           /* This means a is just a reference variable and does not point to any Node.Which means it's not a Node */
         
+        
         //Print
         System.out.println(a);                  /* Node a's location */ /* a is the head of the linked list */
         System.out.println("Node a data- " + a.data); 

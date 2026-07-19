@@ -2,7 +2,24 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
+
+
 public class hashing {
+
+
+    public static class Node{           /* Static nested class */   /* Basically design class */
+
+        Object data;                    //value                     /* This is used to print in the tester class. Ex- head.data (where head is a variable of Node data type) */
+        Node next;                      //address of the next node
+
+        Node(Object data){                 // If there is Node(int data) - it means the nodes can store only int data type
+            this.data = data;
+        }
+    }
+
+
+
+
 
     public static void main(String[] args) {
 
@@ -97,7 +114,10 @@ public class hashing {
 
 
 
-        // 
+        // Ctreating hashtable with array
+        Node[] hashtable = new Node[3];
+
+        
 
 
 

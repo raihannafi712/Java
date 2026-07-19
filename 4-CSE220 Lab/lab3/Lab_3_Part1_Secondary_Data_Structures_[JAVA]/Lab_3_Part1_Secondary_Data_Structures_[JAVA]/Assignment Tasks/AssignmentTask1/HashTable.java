@@ -33,9 +33,9 @@ public class HashTable {
         if ( idx==-1 ) {
             //leaving it blank
         } else if ( ht[idx]==null ){
-            ht[idx] = new PairNode(key, value);
+            ht[idx] = new PairNode(value, key);
         } else {
-            PairNode pair = new PairNode(key, value);
+            PairNode pair = new PairNode(value, key);
             pair.next = ht[idx];
             ht[idx] = pair;
         }
@@ -59,16 +59,41 @@ public class HashTable {
 	//you need to COMPLETE this method and MUST SUBMIT IT
     //Complete this method first the write remove
     private int hashFunction( Integer key ){
-        // TO DO
+        
+        int idx = (key + 3) % 6;
 
-        return -1; //remove this line
+        return idx; 
     }
 
 
 	//you need to COMPLETE this method and MUST SUBMIT IT
     //before writing remove you should complete hashFunction
     public void remove( Integer key ){
-        // TO DO 
+        
+        int idx = hashFunction(key);
+
+        PairNode current = ht[idx];
+        PairNode prev = null;
+
+        while (current != null ) {
+            
+            if (current.key.equals(key)) {
+                
+                if (prev == null) {
+                    ht[idx] = current.next;             /* First node matches  */
+
+                } else {
+                    prev.next = current.next;           /* Middle or end node matches so remove it */
+
+                }
+                return;
+
+            } else {
+                prev = current;
+                current = current.next;
+
+            }
+        }
     }
 
 }

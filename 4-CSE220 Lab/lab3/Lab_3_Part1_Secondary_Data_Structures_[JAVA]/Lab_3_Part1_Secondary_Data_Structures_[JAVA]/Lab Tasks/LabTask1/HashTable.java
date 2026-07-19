@@ -30,24 +30,38 @@ public class HashTable {
 
     //you need to COMPLETE this method
     private int hashFunction( String key ){
-       int n = key.length();
+
+        int st_length = key.length();
         int sum = 0;
 
-        if (n % 2 == 0) {
-            // Even length: sum ASCII of even indices (0, 2, 4...)
-            for (int i = 0; i < n; i += 2) {
-                sum += (int) key.charAt(i);
+        if (st_length % 2 == 0) {
+            
+            for (int i = 0; i < st_length; i++) {           /* All the even character's ascii values will be summed */
+                
+                char ch = key.charAt(i);
+                int ascii = (int)ch;
+
+                if (i % 2 == 0) {
+                    sum += ascii;
+                } 
             }
+
         } else {
-            // Odd length: sum ASCII of odd indices (1, 3, 5...)
-            for (int i = 1; i < n; i += 2) {
-                sum += (int) key.charAt(i);
+            
+            for (int i = 0; i < st_length; i++) {           /* All the even character's ascii values will be summed */
+                
+                char ch = key.charAt(i);
+                int ascii = (int)ch;
+
+                if (i % 2 != 0) {
+                    sum += ascii;
+                } 
             }
         }
+        int final_val = (sum % ht.length);                  /* ht is the array */
 
-        // Modulo by the length of the array to get a valid index
-        // Fixed: changed FruitNode[].length to ht.length
-        return sum % ht.length;
+
+        return final_val;
     }
 
     //you need to COMPLETE this method
@@ -55,43 +69,48 @@ public class HashTable {
 	//then inserts it in the proper hashed index
     //If collision occurs resolve using the steps explained in the question
     public void insert(String key, Integer value){
-int index = hashFunction(key);
-        FruitNode current = ht[index];
 
-        // STEP 1: Check for duplicate key first
-        while (current != null) {
-            if ( ((String) current.fruit[0]).equals(key) ) {
-                // Key exists! Update the price (value) and exit the function.
-                current.fruit[1] = value;
-                return; 
+        int idx = hashFunction(key);                /* The index where the fruit is in the array list */
+        FruitNode n = ht[idx];
+
+
+        //If the fruit still exists
+        while (n != null ) {
+            
+            if (((String) n.fruit[0]).equals(key) ) {       /* It checks if we have the same fruit they gave us */
+                n.fruit[1] = value;                         /* Updating the value. Basically if apple is in the 0 index, then it will just go to that node and update the price. No new node will be created in the chain  */
+                return;
             }
-            current = current.next;
+            n = n.next;                                     /* n is traversing through the node chain of fruit[0]. ONLY THE NAME */
         }
 
-        // STEP 2: Key is new, create the node
-        FruitNode newNode = new FruitNode(key, value);
-        
-        // Reset 'current' back to the head of the chain for this index
-        current = ht[index];
-        FruitNode prev = null;
 
-        // STEP 3: Find the correct insertion point (Descending order by price)
-        // Keep traversing as long as current's price is >= our new price
-        while (current != null && (Integer) current.fruit[1] >= value) {
-            prev = current;
-            current = current.next;
+        n = ht[idx];                                        /* n went back to first node of ht's index(if its apple then index 0) */
+        FruitNode temp = null;                              /* temp will work as the previous node */
+
+
+        //If its a new fruit
+        FruitNode new_node = new FruitNode(key, value);
+
+        while (n != null && value <= (int) n.fruit[1]) {    /* prices will be in descending order.So, if value is greater than any node's price then it will stop */
+            
+            temp = n;                                       /* If the first node has less price then loop won't even runn and temp = null  */
+            n = n.next;
+
         }
 
-        // STEP 4: Insert the node into the linked list
-        if (prev == null) {
-            // Insert at the head (either list was empty, or new price is the highest)
-            newNode.next = ht[index];
-            ht[index] = newNode;
-        } else {
-            // Insert in the middle or at the end of the chain
-            newNode.next = current;
-            prev.next = newNode;
+        if (temp == null) {                                 /* if first node is null or new node comes before first node */
+            
+            new_node.next = n;
+            ht[idx] = new_node;
+
+        } else {                                            /* adding in the middle */
+            
+            new_node.next = n;
+            temp.next = new_node;
+
         }
+
     }
 
 }

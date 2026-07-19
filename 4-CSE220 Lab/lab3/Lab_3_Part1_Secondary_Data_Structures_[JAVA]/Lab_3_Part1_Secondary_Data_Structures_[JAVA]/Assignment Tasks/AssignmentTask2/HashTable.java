@@ -3,6 +3,9 @@
  hashFunction() and searchHashtable()
  the rest of the metods are already written
  DO NOT TOUCH any other methods or codes*/
+
+import org.w3c.dom.Node;
+
 public class HashTable {
 
     //ht[] :: is the HashTable array that stores the PairNode objects
@@ -61,18 +64,111 @@ public class HashTable {
 
 	//you need to COMPLETE this method
     private int hashFunction( String key ){
-        // TO DO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        return -1; //remove this line
+
+        int key_len = key.length();
+        int sum = 0;
+
+        if (key_len % 2 == 0) {
+
+            for (int i = 0; i < key_len - 1; i += 2) {
+                
+                char ch_1 = key.charAt(i) ;
+                char ch_2 = key.charAt(i+1) ;
+
+                sum += (int)ch_1 + (int) ch_2;
+            }
+            
+        } else {
+            key = key + "N";                                /* String concatenaton and new string length is +1 */
+
+                for (int i = 0; i < key_len - 1; i += 2) {
+                
+                char ch_1 = key.charAt(i) ;
+                char ch_2 = key.charAt(i+1) ;
+
+                int asci_1 = (int) ch_1;                    /* exmp- 77 */
+                int asci_2 = (int) ch_2;                    /* exmp- 111 */
+
+                String fin = String.valueOf(asci_1) + String.valueOf(asci_2);               /* "77" + "111" converting int to string and add*/
+
+                sum += Integer.parseInt(fin);
+
+                
+            }
+        }
+        
+        return (sum % ht.length);           /* sum % array length so that index comes with in 0 to 5 */
     }
 
 
 	//you need to COMPLETE this method
     //Hint: you may need to use Integer.parseInt() to convert from String to Integer
     public String searchHashtable( Object[] keyValuePair ){
-        // TO DO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        //it'll return either "Found" or "Not Found"
-        return null; // remove this line
+        String s_key = (String) keyValuePair[0];
+
+        int idx = hashFunction(s_key);
+
+        PairNode curr = ht[idx];
+
+        while (curr != null) {
+            
+            if (curr.key.equals(s_key)) {
+                
+                return "Found";
+            }
+            curr = curr.next;
+        }
+
+        return "Not found";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        // // Extract the key we want to search for
+        // String searchKey = (String) keyValuePair[0];
+        
+        // // Hash Based Search: Get the exact index instantly
+        // int index = hashFunction(keyValuePair);
+        
+        // // Point current to the head of the chain at that exact bucket
+        // PairNode current = ht[index]; // Note: Change 'PairNode' to whatever your class is named (e.g., PairNode)
+
+        // // Traverse the linked list at this specific index
+        // while (current != null) {
+            
+        //     // Assuming your node stores the key in current.key. Adjust if it uses an array!
+        //     if (current.key.equals(searchKey)) {
+        //         return "Found"; 
+        //     }
+            
+        //     current = current.next;
+        // }
+
+        // // If the loop finishes and we haven't returned "Found", it doesn't exist
+  
+        
     }
 
 }
