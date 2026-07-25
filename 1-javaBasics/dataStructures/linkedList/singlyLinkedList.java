@@ -67,7 +67,7 @@ public class singlyLinkedList {
 
 
 
-        // To make linked list through a method / Add new elements at the end of the list
+        // To make linked list through a method / Add new elements at the end of the list           (THIS IS CALLED APPENDING)
         // just make an object of this class and use the method 
         void insertAtEnd(int val){
 
@@ -88,7 +88,7 @@ public class singlyLinkedList {
 
 
 
-        // To add new elements at the beginning of the list
+        // To add new elements at the beginning of the list           (THIS IS CALLED PREPENDING)          
         void insertAtBeginning(int val){
 
             Node obj = new Node(val);
@@ -270,14 +270,14 @@ public class singlyLinkedList {
 
 
         // Dummy headed Singly linked list (Send the head and it will create and show the dummy headed linked list)
-        void dummy(Node head){
+        Node dummy(Node head){
 
             Node n = new Node(null);
 
             n.next = head;
             head = n;
 
-            display(head);
+            return n;
         }
 
 
@@ -346,7 +346,7 @@ public class singlyLinkedList {
 
 
         //Reversing a linked list with recursion
-        public static void displayrev(Node head){
+        void displayrev(Node head){
         
             if(head == null){
                 return;
@@ -355,6 +355,53 @@ public class singlyLinkedList {
             System.out.print(head.data + " ");
                       
         }
+
+
+
+
+
+
+
+
+        //This method will recieve a head and a boolean (true- list rotates right, false list rotates left)
+        //true-  20 -> 10 -> 30 becomes 30 -> 20 -> 10
+        //false- 20 -> 10 -> 30 becomes 10 -> 30 -> 20
+        void rotateList(Node head,Boolean n){
+
+            if (n) {
+                
+                Node second_last = head;
+                Node last = head.next;
+
+                while (last.next != null) {
+                    last = last.next;
+                    second_last = second_last.next;
+                }
+
+                last.next = head.next;
+                head.next = last;
+                second_last.next = null;
+
+            } else {
+
+                Node first = head.next;
+                Node last = head.next;
+
+                while (last.next != null) {
+                    last = last.next;
+                }
+
+                head.next =first.next;
+                first.next = null;
+
+                last.next = first;
+                
+            }
+        }
+
+
+
+
 
 
 
@@ -407,17 +454,31 @@ public class singlyLinkedList {
 
 
         // To connect and make a linked list manually        /* Let's call this Linked list 1 */
-        // Before connecting, a empty list is null and null is both head and tail
-
+        // Before connecting, a empty list is null and null is both head and tail AND In cases of one element inside a linked list, it means its the head and tail both of that list
 
         a.next = b; // 5 -> 4 3 66 78
         b.next = c; // 5 -> 4 -> 3 66 78
         c.next = d; // 5-> 4 -> 3 -> 66 78
         d.next = e; // 5-> 4 -> 3 -> 66 -> 78
+        
 
-        // In cases of one element inside a linked list, it means its the head and tail both of that list
 
 
+        //To remove the last element
+        d.next = null;  // 5-> 4 -> 3 -> 66
+
+
+
+        //Now-
+        Node n = new Node(100);
+        n.next = b;
+
+        // 5-> 4 -> 3 -> 66
+        //     ^
+        //     |
+        //    100
+
+        //So, Two (or even more) different nodes can point to the same node.
 
 
 
@@ -450,7 +511,7 @@ public class singlyLinkedList {
 
 
 
-        // To add element at the end of the list(new tail)
+        // To add element at the end of the list(new tail)  (THIS IS CALLED APPENDING)
         ll.insertAtEnd(4);
         ll.insertAtEnd(10);
         ll.insertAtEnd(20);
@@ -542,8 +603,20 @@ public class singlyLinkedList {
 
 
 
-        //To reverse a linked list
-        ll.rev(ll.head);
+        // To reverse a linked list
+        // ll.rev(ll.head);
+
+
+
+
+        //Rotating linked list 
+        Node dum = ll.dummy(ll.head);
+        ll.display(dum);                //Original list
+        ll.rotateList(dum, false);
+        System.out.println("Rotated list-");
+        ll.display(dum);                //Rotated list
+
+       
 
 
 

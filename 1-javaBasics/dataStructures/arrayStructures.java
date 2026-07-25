@@ -89,7 +89,7 @@ public class arrayStructures {
         // If linear index and D1xD2xD3  is given
         // i = linear ÷ (d2 × d3)        → linear index across first dimension
         // j = (linear ÷ d3) % d2        → index across second dimension  
-        // k = linear % d3                → index across third dimension
+        // k = linear % d3               → index across third dimension
 
 
         // If 3D dimensions and D1xD2xD3 is given

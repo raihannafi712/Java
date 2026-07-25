@@ -4,20 +4,62 @@ public class StackLabTaskTester {
     // You have to write this method
     // NO NEED TO SUBMIT LAB TASK
     public static void removeBlock(Stack stack, int n) {
-         Stack temp = new Stack();
 
-        // Move the first (n-1) blocks to temp, preserving their order
-        for (int i = 1; i < n; i++) {
-            temp.push(stack.pop());
+        Stack temp_s = new Stack();
+        int size = 0;
+
+        while (stack.isEmpty() != true) {
+            temp_s.push(stack.pop());
+            size++;
         }
 
-        // Remove the nth block from the top (give it to the friend, don't push it back)
-        stack.pop();
-
-        // Restore the remaining blocks back onto the original stack
-        while (!temp.isEmpty()) {
-            stack.push(temp.pop());
+        for (int i = 0; i < (size - n); i++) {
+            
+            stack.push(temp_s.pop());
         }
+
+        temp_s.pop();
+
+        while (temp_s.isEmpty() != true) {
+            
+            stack.push(temp_s.pop());
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //  Stack temp = new Stack();
+
+        // // Move the first (n-1) blocks to temp, preserving their order
+        // for (int i = 1; i < n; i++) {
+        //     temp.push(stack.pop());
+        // }
+
+        // // Remove the nth block from the top (give it to the friend, don't push it back)
+        // stack.pop();
+
+        // // Restore the remaining blocks back onto the original stack
+        // while (!temp.isEmpty()) {
+        //     stack.push(temp.pop());
+        // }
     }
 
 

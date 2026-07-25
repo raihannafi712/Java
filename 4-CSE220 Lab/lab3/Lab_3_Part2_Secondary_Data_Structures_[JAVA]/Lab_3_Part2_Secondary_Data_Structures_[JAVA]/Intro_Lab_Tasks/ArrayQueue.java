@@ -11,7 +11,7 @@ public class ArrayQueue {
         this.queue = new Object[arrayLen];
         this.front = 0;
         this.rear = 0;
-	this.size = 0;
+	    this.size = 0;
     }
 
     public void enqueue(Object element) {

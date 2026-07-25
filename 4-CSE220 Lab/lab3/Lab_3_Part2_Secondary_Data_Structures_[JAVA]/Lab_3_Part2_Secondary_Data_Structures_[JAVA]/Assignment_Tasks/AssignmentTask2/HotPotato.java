@@ -4,8 +4,30 @@ package AssignmentTask2;
 public class HotPotato{
 
     public static String hotPotato(String[] players, int k) {
-        // TODO: Implement the hot potato logic here
-        return null;
+
+        LinkedListQueue temp_q = new LinkedListQueue();
+
+        for (int i = 0; i < players.length; i++) {
+            
+            temp_q.enqueue(players[i]);
+        }
+
+        for (int i = 0; i < players.length - 1; i++) {
+            
+            for (int j = 0; j < k; j++) {
+                
+                temp_q.enqueue(temp_q.dequeue());               /* Basically,removing the front element and adding it in the rear until the person that will be eliminated. */
+
+            }
+
+            String elim = (String) temp_q.dequeue();            /* The eliminated player gets removed */
+            System.out.println(elim + " eliminated");
+        }
+
+        String winner = (String) temp_q.dequeue();
+
+
+        return winner;
     }
 
     public static void main(String[] args) {

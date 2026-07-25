@@ -5,7 +5,198 @@ public class DancePairs {
 
     public static void dance_pair(Stack stk) {
 
-        // TODO: Implement pairing logic using only stack and queues here
+
+    Stack main_working = new Stack();
+    Queue queue_fem = new Queue();
+    Queue queue_mal = new Queue();
+    int count = 1;
+
+    while (stack.isEmpty() != true) {
+
+        Dancer dan_curr = (Dancer) stack.pop();
+
+        if (main_working.isEmpty()) {
+
+            main_working.push(dan_curr);
+            continue;
+        }
+
+        Dancer dan_top = (Dancer) main_working.peek();
+
+        if (dan_top.getGender() != dan_curr.getGender()) {
+
+            main_working.pop();
+            System.out.println("#" + count + ": " + dan_top + " & " + dan_curr);
+            count++;
+        } else if (dan_top.getGender() == 'F') {
+
+            main_working.pop();
+            queue_fem.enqueue(dan_top);
+            main_working.push(dan_curr);
+        } else {
+
+            main_working.pop();
+            if (queue_fem.isEmpty() != true) {
+
+                Dancer partner = (Dancer) queue_fem.dequeue();
+                System.out.println("#" + count + ": " + dan_top + " & " + partner);
+                count++;
+
+            } else {
+
+                queue_mal.enqueue(dan_top);
+            }
+            main_working.push(dan_curr);
+        }
+    }
+
+    if (main_working.isEmpty() != true) {
+
+        Dancer dan_leftover = (Dancer) main_working.pop();
+        if (dan_leftover.getGender() == 'F') queue_fem.enqueue(dan_leftover);
+        else queue_mal.enqueue(dan_leftover);
+    }
+
+    if (queue_fem.isEmpty() != true) {
+
+        System.out.println("Unpaired Female:");
+        String result = "";
+
+        while (!queue_fem.isEmpty()) {
+
+            result = result + queue_fem.dequeue();
+            if (!queue_fem.isEmpty()) result = result + ", ";
+        }
+        System.out.println(result);
+    }
+
+    if (queue_mal.isEmpty() != true) {
+
+        System.out.println("Unpaired Male:");
+        String final_res = "";
+
+        while (queue_mal.isEmpty() != true) {
+
+            final_res = final_res + queue_mal.dequeue();
+            if (queue_mal.isEmpty() != true) final_res = final_res + ", ";
+        }
+
+        System.out.println(final_res);
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    // LinkedListQueue queue_fem = new LinkedListQueue();
+    // LinkedListQueue maleQueue = new LinkedListQueue();
+
+    // Stack temp = new Stack();
+    // int main_dance_count = 1;
+    // int size = stack.size();
+
+    // for (int i = 0;i <size; i++) {
+
+    //     temp.push(stack.pop());
+    // }
+
+    // int tempSize = temp.size();
+
+    // for (int i = 0;i <tempSize; i++) {
+
+    //     Dancer current = (Dancer) temp.pop();
+
+    //     if (!stack.isEmpty()) {
+
+    //         Dancer top = (Dancer) stack.peek();
+    //         if (current.gender != top.gender) {
+    //             stack.pop();
+    //             if (current.gender == 'M') {
+
+    //                 System.out.println("#" + main_dance_count + ": " + top.name + "(F-" + top.id + ") & " + current.name + "(M-" + current.id + ")");
+    //             } else {
+
+    //                 System.out.println("#" + main_dance_count + ": " + current.name + "(F-" + current.id + ") & " + top.name + "(M-" + top.id + ")");
+    //             }
+    //             main_dance_count++;
+    //         } else if (current.gender =='F') {
+    //             queue_fem.enqueue(current);
+    //             stack.push(top);
+    //             stack.pop();
+    //         } else {
+
+    //             if (!femaleQueue.isEmpty()) {
+
+    //                 Dancer female = (Dancer) femaleQueue.dequeue();
+    //                 System.out.println("#" + main_dance_count + ": " + female.name + "(F-" + female.id + ") & " + current.name + "(M-" + current.id + ")");
+    //                 main_dance_count++;
+    //             } else {
+
+    //                 maleQueue.enqueue(current);
+    //             }
+    //             stack.pop();
+    //         }
+    //     } else {
+
+    //         stack.push(current);
+    //     }
+    // }
+
+    // int female_dance_s = femaleQueue.size();
+    // int male_dance_s = maleQueue.size();
+
+    // if (female_dance_s > 0) {
+
+    //     System.out.println("\nUnpaired Female:");
+    //     for (int i = 0; i <female_dance_s; i++) {
+
+    //         Dancer d = (Dancer) femaleQueue.dequeue();
+    //         System.out.print(d.name + "(F-" + d.id + ")");
+    //         if (i <female_dance_s- 1) {
+    //             System.out.print(", ");
+    //         }
+    //     }
+    // }
+
+    // if (male_dance_s> 0) {
+    //     System.out.println("Unpaired Male:");
+    //     for (int i = 0; i <male_dance_s; i++) {
+
+    //         Dancer d = (Dancer) maleQueue.dequeue();
+    //         System.out.print(d.name + "(M-" + d.id + ")");
+    //         if (i < male_dance_s - 1) {
+
+    //             System.out.print(", ");
+    //         }
+    //     }
+    // }
 
     }
 

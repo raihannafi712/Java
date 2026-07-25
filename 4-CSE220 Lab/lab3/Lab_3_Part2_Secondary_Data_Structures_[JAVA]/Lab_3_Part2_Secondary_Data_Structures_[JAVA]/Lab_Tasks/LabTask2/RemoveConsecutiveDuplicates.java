@@ -1,28 +1,59 @@
 package LabTask2;
+
+import java.util.Queue;
+
 public class RemoveConsecutiveDuplicates{
 	
     // You have to write this method
     // YOU MUST SUBMIT THIS METHOD
     public static String removeConsecDups(String word){
-         LinkedListQueue queue = new LinkedListQueue();
 
-        // Enqueue every character of the word
-        for (char c : word.toCharArray()) {
-            queue.enqueue(c);
+        LinkedListQueue temp_q = new LinkedListQueue();
+        LinkedListQueue final_q = new LinkedListQueue();
+        char c2 = 0;
+
+        for (int i = 0; i < word.length(); i++) {
+            temp_q.enqueue(word.charAt(i));                 /* Adding each character from the string to a temp queue */
         }
 
-        StringBuilder result = new StringBuilder();
-        Character prev = null;
+        while (temp_q.isEmpty() != true) {
 
-        while (!queue.isEmpty()) {
-            char curr = (Character) queue.dequeue();
-            if (prev == null || curr != prev) {
-                result.append(curr);
+            char c = (char) temp_q.peek();                  /* Need to cast because queue has objects as elements */
+
+            if (final_q.isEmpty() == true ) {
+
+                c2 = c;
+                final_q.enqueue(temp_q.dequeue());
+                continue;
             }
-            prev = curr;
+            
+            if (c != c2) {
+
+                c2 = c;
+                final_q.enqueue(temp_q.dequeue());
+                
+                
+            }else{
+                temp_q.dequeue();
+            }
+            
         }
 
-        return result.toString();
+        //Creating final string
+        String result = "";
+
+        while (final_q.isEmpty() != true) {
+            result = result + (char) final_q.dequeue();
+        }
+
+
+        return result;
+
+
+
+
+
+
     }
     
     //DO NOT CHANGE and DO NOT SUBMIT THIS METHOD
