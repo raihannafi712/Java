@@ -11,31 +11,34 @@ class AssgnTask1{
 
         for (int i = 0; i < rotation; i++) {
             
-            String[] temp = matrix[row_size - 1];
+            String[] temp = new String[1];
+            temp = matrix[row_size - 1];                /* temp[0] would be wrong because we are assigning a whole row to a linear array */
 
-            for (int j = row_size - 1; j > 0; j--) {
+            for (int j = (row_size-1); j > 0; j--) {
                 
-                matrix[j] = matrix[j - 1];
+                matrix[j] = matrix[j-1];
             }
             matrix[0] = temp;
 
         }
 
-        int row_num = 0;
+        String f = "AA";
+
+        int row = 0;
         for (int i = 0; i < row_size; i++) {
             
             for (int j = 0; j < col_size; j++) {
                 
                 System.out.print(matrix[i][j] + " ");
-                if (matrix[i][j].equals("AA")) {
-                    row_num = i + 1;
+                if (f.equals(matrix[i][j])) {
+                    row = i+1;
                 }
+
             }
             System.out.println();
         }
 
-
-        return row_num;
+        return row;
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE

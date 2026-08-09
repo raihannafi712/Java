@@ -8,30 +8,38 @@ class LabTask1{
         int row_size = matrix.length;
         int col_size = matrix[0].length;
 
-        for (int i = 0; i < col_size; i++) {            /* col size here because column stays the same and row changs downwards and upwards */
+        for (int i = 0; i < col_size; i++) {
 
-            if (i % 2 == 0) {                                   /* EVEN column (i) */
+            if (i % 2 == 0) {
+                
                 for (int j = 0; j < row_size; j += 2) {
                 
-                    System.out.print(matrix[j][i] + " ");       /* j is row as it traverses and col stays same for the first loop */
+                    System.out.print(matrix[j][i] + " ");
+
                 }
-            } 
-            else {                                                      /* ODD column (i) */
 
-                if (row_size % 2 == 0) {
-                    for (int j = (row_size - 1); j >= 0; j -= 2) {
+            } else if (row_size % 2 == 0) {
+                
+                for (int j = (row_size - 1) ; j >= 0; j -= 2) {
+            
+                    System.out.print(matrix[j][i] + " ");
 
-                        System.out.print(matrix[j][i] + " "); 
-                    }
-                } else {
-                    
-                    for (int j = (row_size - 2); j >= 0; j -= 2) {          /* when index goes j < 0, loop stops */
-                        System.out.print(matrix[j][i] + " "); 
-                    }
+                }
+
+            } else {
+
+                for (int j = (row_size - 2) ; j >= 0; j -= 2) {
+            
+                    System.out.print(matrix[j][i] + " ");
+
                 }
             }
             System.out.println();
+            
+
         }
+
+
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE

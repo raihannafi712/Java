@@ -32,6 +32,5 @@ public class midSolve {
         }
 
         return mat;
-
     }
 }

@@ -11,7 +11,9 @@ class LabTask2{
         for (int i = 0; i < col_size; i++) {
             
             for (int j = 0; j < row_size; j++) {
-                sum[i] = sum[i] + matrix[j][i];
+                
+                sum[i] += matrix[j][i];
+
             }
         }
 
@@ -19,8 +21,10 @@ class LabTask2{
 
         for (int i = 0; i < final_arr.length; i++) {
             
-            final_arr[i] = sum[i + 1] - sum[i];
+            final_arr[i] = sum[i+1] - sum[i];
+
         }
+
         return final_arr;
 
     }
