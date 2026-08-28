@@ -1,8 +1,5 @@
 // Complete the swapChild method
 //ASSIGNMENT TASK MUST SUBMIT
-
-// import org.w3c.dom.Node;
-
 public class Task8 {
 
     //===================================TASK#4===================================
@@ -13,52 +10,8 @@ public class Task8 {
     // All the changes will happen in-place
     // This method doesn't return anything
     // You can use extra helper private static methods as per need
-
-    public static void swapChild(BTNode root, int lvl, int M){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        // if(root==null){
-
-        //     return;
-        // }
-        // if(lvl < M){
-
-        //     BTNode new_node = root.left;
-        //     root.left=root.right;
-
-        //     root.right=new_node ;
-        // }
-
-        // lvl += 1;
-        // swapChild(root.left,lvl,M);
-        // swapChild(root.right,lvl,M);
+    public static void swapChild( BTNode root, int lvl, int M ){
+        //TO DO
     }
     //============================================================================
 }

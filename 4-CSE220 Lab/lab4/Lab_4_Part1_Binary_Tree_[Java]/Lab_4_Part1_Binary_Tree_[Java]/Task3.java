@@ -1,25 +1,37 @@
 //LAB TASK NO NEED TO SUBMIT
 public class Task3 {
 
-    //===================================TASK#3_1===================================
-    // This method takes 1 parameter, the root
-    // This method returns the summation
-    // No Helper Methods are needed for this task
-    public static Integer sumTree( BTNode root ){
-        if (root == null) {
-            return 0;
+        //===================================TASK#3_1===================================
+        // This method takes 1 parameter, the root
+        // This method returns the summation
+        // No Helper Methods are needed for this task
+        public static Integer sumTree( BTNode root ){
+            if (root == null) {
+                return 0;
+            }
+
+            return (int) root.elem + sumTree(root.left) + sumTree(root.right);
         }
-        return (Integer) root.elem + sumTree(root.left) + sumTree(root.right);
-    }
-    
-    //===================================TASK#3_2===================================
-    // This method takes 1 parameter, the root
-    // This method returns the summation
-    // You can use extra helper private static methods as per need
-    public static void sumTreePrint( BTNode root ){
-        // Utilizing the return from Task 3.1 directly to print
-        System.out.println(sumTree(root));
-    }
-    //============================================================================
+        //===================================TASK#3_2===================================
+        // This method takes 1 parameter, the root
+        // This method returns the summation
+        // You can use extra helper private static methods as per need
+        public static void sumTreePrint( BTNode root ){
+            if (root == null) {
+                System.out.println(0);
+            }
+
+            Integer count;
+            count = (Integer) root.elem + sumTree(root.left) + sumTree(root.right);
+
+            System.out.println(count);
+
+
+            //OR
+
+            // System.out.println(sumTree(root));
+        }
+        //============================================================================
+
 
 }
