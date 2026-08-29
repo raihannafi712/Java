@@ -15,50 +15,23 @@ public class Task8 {
     // You can use extra helper private static methods as per need
 
     public static void swapChild(BTNode root, int lvl, int M){
+        if (root == null) {
+            return;
+        }
+
+        if (lvl < M) {
+            
+            BTNode temp = root.left;
+
+            root.left = root.right;                 /* Now root.left and root.right both are root.right */
+            root.right = temp;                      /* Now root.right is the saved root.left (They are swapped) */
+        }
+
+        lvl++;
+        swapChild(root.left, lvl, M);
+        swapChild(root.right, lvl, M);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        // if(root==null){
-
-        //     return;
-        // }
-        // if(lvl < M){
-
-        //     BTNode new_node = root.left;
-        //     root.left=root.right;
-
-        //     root.right=new_node ;
-        // }
-
-        // lvl += 1;
-        // swapChild(root.left,lvl,M);
-        // swapChild(root.right,lvl,M);
     }
     //============================================================================
 }
