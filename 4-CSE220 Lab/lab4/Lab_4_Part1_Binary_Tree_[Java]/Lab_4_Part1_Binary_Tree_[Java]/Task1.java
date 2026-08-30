@@ -41,7 +41,7 @@ public class Task1 {
         helperIn(root, 0);
     }
 
-        private static void helperIn(BTNode root , int lvl){
+    private static void helperIn(BTNode root , int lvl){
         if (root == null) {
             return;
         }
