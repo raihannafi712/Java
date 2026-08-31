@@ -13,6 +13,10 @@ public class BST {
 
     Node root;
 
+
+
+
+    
     //Insertion
      public void insert(int key) {
         root = insertRec(root, key);

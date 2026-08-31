@@ -1,5 +1,4 @@
 public class MinHeap {
-
     private Integer[] heap;
     private int size;
     private int cap_arr;
