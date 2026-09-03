@@ -1,73 +1,78 @@
 //Before starting to work on this design the Tree in the Tester code 
 // Complete the lowestCommonAncestor method
 
-import org.w3c.dom.Node;
-
 public class Task1 {
 
     //======================TASK#1a======================
     // This method takes only 1 parameter; root of a BST
     // You'll need to find the max of the BST and return it
-    public static Integer maxOfBST( BSTNode root ){
-
-        if (root == null) {
-            return 0;
+    public static Integer maxOfBST(BSTNode root) {
+        if (root == null) {                             //If the BST is empty
+            return null;
         }
-        
-        maxOfBST(root.right);
 
-        return (Integer) root.elem;
+        if (root.right == null) {                       //If the BST does not has a right subtree
+            return (Integer) root.elem;
+        }
+
+        return maxOfBST(root.right);
     }
 
     //OR
 
-//     Node maxOfBST(Node node) {
-//     while (node.right != null) {
-//         node = node.right;
-//     }
-//     return node;
-// }
+    //     Node maxOfBST(Node node) {
+    //     while (node.right != null) {
+    //         node = node.right;
+    //     }
+    //     return node;
+    // }
     //==================================================
 
     //======================TASK#1b======================
     // This method takes only 2 parameters
     // root of a BST and the value of which you wanna the predecessor
     // You'll need to find the max of the BST and return it
-    public static Integer inOrderPred(Node root, int value) {
-        Node predecessor = null;
-        Node current = root;
+    public static Integer inOrderPred(BSTNode root, int value) {
 
+        BSTNode current = root;
+        BSTNode predecessor = null;
+        BSTNode target_node = null;                 //The node who's predecessor we are searching
+
+        //Searching the target node
         while (current != null) {
-            if (value > current.value) {
-                // The target value is greater, so current might be the predecessor.
-                // Record it, and move right to find an even closer (larger) predecessor.
+            
+            if (current.elem == value) {            //Found the target node
+                target_node = current;
+                break;
+
+            } else if (current.elem > value) {      //If the current node is greater than the value, then target node is in the left subtree
+                current = current.left;
+
+            }else{  //current.elem < value          //This means current node could be the predecessor so just add it as pred for now                                  
                 predecessor = current;
                 current = current.right;
-                
-            } else if (value < current.value) {
-                // The target value is smaller, predecessor must be in the left subtree.
-                current = current.left;
-                
-            } else {
-                // We found the target node!
-                if (current.left != null) {
-                    // Case 1: Node has a left subtree. 
-                    // Reusing 1a's logic: Find the maximum in the left subtree.
-                    Node temp = current.left;
-                    while (temp.right != null) {
-                        temp = temp.right;
-                    }
-                    predecessor = temp;
-                }
-                
-                // Case 2: Node has no left subtree. 
-                // The predecessor is the last recorded ancestor where we took a right turn.
-                break; 
             }
         }
+        // Found the target node. Now, we find the predecessor
 
-        // Return the value if a predecessor exists, otherwise return null
-        return (predecessor != null) ? predecessor.value : null;
+        // If the target node does not exist in the tree
+        if (target_node == null) {
+            return null;
+        }
+
+        // Case 1 (predecessor is max of left subtree)
+        if (target_node.left != null) {
+            return maxOfBST(target_node.left);              //We have to return the max of left subtree, not the predecessor because in some cases it might be null still
+        }
+
+
+        //Case 2  (If the target node doesn't have a left subtree then the predecessor is up somewhere)
+        if (predecessor != null) {
+            return predecessor.elem;            //We already kept saving the smallest elements than the target node.So the last one is the predecessor
+        } else {
+            return null;
+        }
+          
     }
 
 

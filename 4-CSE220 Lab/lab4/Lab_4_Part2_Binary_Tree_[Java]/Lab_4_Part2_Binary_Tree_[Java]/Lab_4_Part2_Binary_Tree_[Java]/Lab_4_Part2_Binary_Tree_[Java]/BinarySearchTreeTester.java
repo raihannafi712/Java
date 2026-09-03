@@ -29,49 +29,79 @@ public class BinarySearchTreeTester {
         
         BSTNode root = new BSTNode(54);
         root.left = new BSTNode(16);
+        root.right = new BSTNode(66);
+
         root.left.left = new BSTNode(-4);
-        // TO DO
-        // CONSTRUCT THE REST OF THE TREE ON YOUR OWN FROM 
-        // THE EXAMPLE SHOWN IN THE QUESTION
+        root.left.right = new BSTNode(35);
+        root.right.left = new BSTNode(58);
+        root.right.right = new BSTNode(71);
+
+        root.left.left.left = new BSTNode(-6);
+        root.left.right.left = new BSTNode(20);
+        root.left.right.right = new BSTNode(50);
 
         // Once the you're done creating the tree then uncomment the following lines
         
-        // System.out.println("::Given Binary Tree::");
-        // BSTPrinter.printNode(root);
-        // System.out.println("--------------------------------------------------");
+        System.out.println("::Given Binary Tree::");
+        BSTPrinter.printNode(root);
+        System.out.println("--------------------------------------------------");
         
-        // String t1 = "Task#1a";
-        // Integer out = Task1.maxOfBST(root);
-        // System.out.println(":Expected Output: 71");
-        // System.out.println(":  Your Output  : "+out);
-        // if(out==null || out!=71) failedPrint(t1);
-        // else successPrint(t1);
+        String t1 = "Task#1a";
+        Integer out = Task1.maxOfBST(root);
+        System.out.println(":Expected Output: 71");
+        System.out.println(":  Your Output  : "+out);
+        if(out==null || out!=71) failedPrint(t1);
+        else successPrint(t1);
 
         taskPrint("\n========================== TASK#1b =========================");
         taskPrint("================== InOrder Predecessor =================");
 
         // //First test case is already written for you so, don't change it
-        // t1 = "Task#1b Test#1";
-        // out = Task1.inOrderPred(root, 54);
-        // System.out.println(":Expected Output: 50");
-        // System.out.println(":  Your Output  : "+out);
-        // if(out==null || out!=50) failedPrint(t1);
-        // else successPrint(t1);
+        t1 = "Task#1b Test#1";
+        out = Task1.inOrderPred(root, 54);
+        System.out.println(":Expected Output: 50");
+        System.out.println(":  Your Output  : "+out);
+        if(out==null || out!=50) failedPrint(t1);
+        else successPrint(t1);
         
-        // //Write the rest of the test cases yourself
-        // System.out.println("------------------------------");
-        // // Test Case 2 inOrderPred(root,66)
-        // // TO DO
-        // System.out.println("------------------------------");
-        // // Test Case 3 inOrderPred(root,20)
-        // // TO DO
-        // System.out.println("------------------------------");
-        // // Test Case 4 inOrderPred(root,50)
-        // // TO DO
-        // System.out.println("------------------------------");
-        // // Test Case 5 inOrderPred(root,-6)
-        // // TO DO
-        // System.out.println("------------------------------");
+        //Write the rest of the test cases yourself
+        System.out.println("------------------------------");
+        // Test Case 2 inOrderPred(root,66)
+       System.out.println("------------------------------");
+        // Test Case 2 inOrderPred(root,66)
+        t1 = "Task#1b Test#2";
+        out = Task1.inOrderPred(root, 66);
+        System.out.println(":Expected Output: 58");
+        System.out.println(":  Your Output  : "+out);
+        if(out==null || out!=58) failedPrint(t1);
+        else successPrint(t1);
+
+        System.out.println("------------------------------");
+        // Test Case 3 inOrderPred(root,20)
+        t1 = "Task#1b Test#3";
+        out = Task1.inOrderPred(root, 20);
+        System.out.println(":Expected Output: 16");
+        System.out.println(":  Your Output  : "+out);
+        if(out==null || out!=16) failedPrint(t1);
+        else successPrint(t1);
+
+        System.out.println("------------------------------");
+        // Test Case 4 inOrderPred(root,50)
+        t1 = "Task#1b Test#4";
+        out = Task1.inOrderPred(root, 50);
+        System.out.println(":Expected Output: 35");
+        System.out.println(":  Your Output  : "+out);
+        if(out==null || out!=35) failedPrint(t1);
+        else successPrint(t1);
+
+        System.out.println("------------------------------");
+        // Test Case 5 inOrderPred(root,-6)
+        t1 = "Task#1b Test#5";
+        out = Task1.inOrderPred(root, -6);
+        System.out.println(":Expected Output: null/None");
+        System.out.println(":  Your Output  : "+out);
+        if(out!=null) failedPrint(t1);   // note: null IS the correct/expected result here
+        else successPrint(t1);
     }
 
     public static void task2(){
@@ -87,33 +117,33 @@ public class BinarySearchTreeTester {
 
         // Once the you're done creating the tree then uncomment the following lines
         
-        // System.out.println("::Given Binary Tree::");
-        // BSTPrinter.printNode(root);
-        // System.out.println("--------------------------------------------------");
+        System.out.println("::Given Binary Tree::");
+        BSTPrinter.printNode(root);
+        System.out.println("--------------------------------------------------");
         
-        // //First test case is already written for you so, don' change it
-        // String t2 = "Task#2 Test#1";
-        // System.out.println(":Expected Output: LCA(6,12)=10");
-        // Integer out = Task2.lowestCommonAncestor(root,6,12);
-        // System.out.println(":  Your Output  : LCA(6,12)="+out);
-        // if(out==null || out!=10) failedPrint(t2);
-        // else successPrint(t2);
+        //First test case is already written for you so, don' change it
+        String t2 = "Task#2 Test#1";
+        System.out.println(":Expected Output: LCA(6,12)=10");
+        Integer out = Task2.lowestCommonAncestor(root,6,12);
+        System.out.println(":  Your Output  : LCA(6,12)="+out);
+        if(out==null || out!=10) failedPrint(t2);
+        else successPrint(t2);
         
-        // //Write the rest of the test cases yourself
+        //Write the rest of the test cases yourself
         
-        // System.out.println("------------------------------");
-        // // Test Case 2 (20,6)
-        // // TO DO
-        // System.out.println("------------------------------");
-        // // Test Case 3 (18,22)
-        // // TO DO
-        // System.out.println("------------------------------");
-        // // Test Case 4 (20,25)
-        // // TO DO
-        // System.out.println("------------------------------");
-        // // Test Case 5 (10,12)
-        // // TO DO
-        // System.out.println("------------------------------");
+        System.out.println("------------------------------");
+        // Test Case 2 (20,6)
+        // TO DO
+        System.out.println("------------------------------");
+        // Test Case 3 (18,22)
+        // TO DO
+        System.out.println("------------------------------");
+        // Test Case 4 (20,25)
+        // TO DO
+        System.out.println("------------------------------");
+        // Test Case 5 (10,12)
+        // TO DO
+        System.out.println("------------------------------");
     }
     
     public static void task3(){

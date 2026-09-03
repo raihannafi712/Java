@@ -88,11 +88,24 @@ public class BST {
 
 
     // FIND MAXIMUM
-    public int findMax(Node current) {
-        while (current.right != null) {
-            current = current.right;
+    public static Integer findMax(Node root) {
+
+        if (root == null) {                             //If the BST is empty
+            return null;
         }
-        return current.elem;
+
+        if (root.right == null) {                       //If the BST does not has a right subtree
+            return (Integer) root.elem;
+        }
+
+        return findMax(root.right);
+
+        //Or
+        // while (current.right != null) {
+        //     current = current.right;
+        // }
+        // return current.elem;
+
     }
 
 
@@ -147,6 +160,53 @@ public class BST {
     }
 
 
+    
+
+
+    // Finding the predecessor (in-order) of a target node(value) (Inorder traversal not needed in BST, this method is more efficient)
+    public static Integer inOrderPred(Node root, int value) {
+
+        Node current = root;
+        Node predecessor = null;
+        Node target_node = null;                 //The node who's predecessor we are searching
+
+        //Searching the target node
+        while (current != null) {
+            
+            if (current.elem == value) {            //Found the target node
+                target_node = current;
+                break;
+
+            } else if (current.elem > value) {      //If the current node is greater than the value, then target node is in the left subtree
+                current = current.left;
+
+            }else{  //current.elem < value          //This means current node could be the predecessor so just add it as pred for now                                  
+                predecessor = current;
+                current = current.right;
+            }
+        }
+        // Found the target node. Now, we find the predecessor
+
+        // If the target node does not exist in the tree
+        if (target_node == null) {
+            return null;
+        }
+
+        // Case 1 (predecessor is max of left subtree)
+        if (target_node.left != null) {
+            return findMax(target_node.left);              //We have to return the max of left subtree, not the predecessor because in some cases it might be null still
+
+        }
+
+
+        //Case 2  (If the target node doesn't have a left subtree then the predecessor is up somewhere)
+        if (predecessor != null) {
+            return predecessor.elem;            //We already kept saving the smallest elements than the target node.So the last one is the predecessor
+        } else {
+            return null;
+        }
+          
+    }
 
 
 
@@ -157,6 +217,10 @@ public class BST {
 
 
 
+
+
+
+    // BST does not need these traversals because it already sorts nodes in a specific order
     // 6. IN-ORDER TRAVERSAL (Left, Root, Right)
     public void inOrder(Node current) {
         if (current != null) {
