@@ -816,15 +816,49 @@ public class basicTopics {
 
             // 5. Strings
 
-            // String s1 = "First created string";                             /*Using string literal  */
+            //CREATING STRINGS
+
+            // String s1 = "First created string";                              /*Using string literal  */
+
+            // String s2 = new String("Hello");                                 /* New keyword */
+
+            // char[] ch = {'H', 'e', 'l', 'l', 'o'};                           /* Char array */
+            // String s3 = new String(ch);
+            // System.out.println(s3);
+
+            // StringBuilder sb = new StringBuilder();                          /* StringBuilder */
+            // sb.append("Hello");
+            // sb.append(" World");
+            // String s5 = sb.toString();
+
+
+
+
+            //DISPLAY
+
             // System.out.println(s1);
 
-            //                                      /* String length and character */
+
+
+
+            //DISPLAY STRING LENGTH AND CHARACTERS                                 
 
             // System.out.println(s2);
             // System.out.println("s2's length= " + s2.length());                                       /* To print string's length */ /* Length is always one more than the index number  */
             // System.out.println("index 3's character= " + s2.charAt(3));                              /* To print a string's specific index's character */
             // System.out.println("last character of the string = " + s2.charAt(s2.length()-1));        /* To print the last index */
+
+
+
+            //MODYFYING STRINGS 
+            // Once a String is created, you cannot directly add or modify characters/elements inside it. So java creates new objects to add
+            // If we use String builder, then elements can be added
+            // String s = "hello";         //hello
+            // s = s + "world";            //hello world (It creates new string object)
+
+
+
+
 
 
             //                                     /* To take string and characters inputs */

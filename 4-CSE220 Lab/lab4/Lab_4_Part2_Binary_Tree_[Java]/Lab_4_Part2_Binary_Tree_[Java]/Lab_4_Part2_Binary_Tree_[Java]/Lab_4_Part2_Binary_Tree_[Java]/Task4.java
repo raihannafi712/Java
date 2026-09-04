@@ -4,31 +4,29 @@ public class Task4 {
 
     //===================================TASK#4======================
     public static Integer rangeSum(BSTNode root, Integer low, Integer high){
-        if(root==null){
 
+        if (root == null) {
             return 0;
         }
 
-        int val = (int) root.elem;   
-        int temp_val= 0;
+        Integer total = 0;
 
-        if(val >= low && val <= high){
+        if (low <= root.elem && high >= root.elem) {            /// Element is >= low AND <= high. It's in range, so we take it and check both sides.
+            
+            total += root.elem;
 
-            temp_val += val;
+            total += rangeSum(root.left, low, high);
+            total += rangeSum(root.right, low, high);
 
-            temp_val+=rangeSum(root.left,low,high);
-            temp_val+=rangeSum(root.right,low,high);
+        } else if (low < root.elem) {                             // Node is greater than high. It's too big, so we only search the left subtree.
+            
+            total += rangeSum(root.left, low, high);
 
+        }else {                                                     // Node is smaller than low. It's too small, so we only search the right subtree.
+            total += rangeSum(root.right, low, high);               
         }
-        else if(val<low){
 
-            temp_val += rangeSum(root.right,low,high);
-        }
-        else{
-
-            temp_val += rangeSum(root.left,low,high);
-        }
-        return temp_val;
+        return total;
     }
 
     //===============================================================

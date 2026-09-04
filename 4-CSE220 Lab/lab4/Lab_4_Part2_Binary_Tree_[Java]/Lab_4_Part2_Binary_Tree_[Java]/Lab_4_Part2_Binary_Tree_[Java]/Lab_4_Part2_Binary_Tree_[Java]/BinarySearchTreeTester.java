@@ -20,7 +20,7 @@ public class BinarySearchTreeTester {
         if( input.equals("5") || input.equals("") ) task5();
         if( input.equals("6") || input.equals("") ) task6();
         
-      	System.out.println(cyan+"\n===================== TheEnd ===================="+endFormat);
+        System.out.println(cyan+"\n===================== TheEnd ===================="+endFormat);
     }
     
     public static void task1(){
@@ -56,7 +56,7 @@ public class BinarySearchTreeTester {
         taskPrint("\n========================== TASK#1b =========================");
         taskPrint("================== InOrder Predecessor =================");
 
-        // //First test case is already written for you so, don't change it
+        // First test case is already written for you so, don't change it
         t1 = "Task#1b Test#1";
         out = Task1.inOrderPred(root, 54);
         System.out.println(":Expected Output: 50");
@@ -64,10 +64,8 @@ public class BinarySearchTreeTester {
         if(out==null || out!=50) failedPrint(t1);
         else successPrint(t1);
         
-        //Write the rest of the test cases yourself
+        // Write the rest of the test cases yourself
         System.out.println("------------------------------");
-        // Test Case 2 inOrderPred(root,66)
-       System.out.println("------------------------------");
         // Test Case 2 inOrderPred(root,66)
         t1 = "Task#1b Test#2";
         out = Task1.inOrderPred(root, 66);
@@ -111,9 +109,15 @@ public class BinarySearchTreeTester {
         BSTNode root = new BSTNode(15);
         root.left = new BSTNode(10);
         root.left.left = new BSTNode(8);
-        // TO DO
+        
         // CONSTRUCT THE REST OF THE TREE ON YOUR OWN FROM 
         // THE EXAMPLE SHOWN IN THE QUESTION
+        root.left.right = new BSTNode(12);
+        root.left.left.left = new BSTNode(6);
+        root.right = new BSTNode(20);
+        root.right.left = new BSTNode(18);
+        root.right.right = new BSTNode(25);
+        root.right.right.left = new BSTNode(22);
 
         // Once the you're done creating the tree then uncomment the following lines
         
@@ -133,16 +137,40 @@ public class BinarySearchTreeTester {
         
         System.out.println("------------------------------");
         // Test Case 2 (20,6)
-        // TO DO
+        t2 = "Task#2 Test#2";
+        System.out.println(":Expected Output: LCA(20,6)=15");
+        out = Task2.lowestCommonAncestor(root, 20, 6);
+        System.out.println(":  Your Output  : LCA(20,6)="+out);
+        if(out==null || out!=15) failedPrint(t2);
+        else successPrint(t2);
+        
         System.out.println("------------------------------");
         // Test Case 3 (18,22)
-        // TO DO
+        t2 = "Task#2 Test#3";
+        System.out.println(":Expected Output: LCA(18,22)=20");
+        out = Task2.lowestCommonAncestor(root, 18, 22);
+        System.out.println(":  Your Output  : LCA(18,22)="+out);
+        if(out==null || out!=20) failedPrint(t2);
+        else successPrint(t2);
+        
         System.out.println("------------------------------");
         // Test Case 4 (20,25)
-        // TO DO
+        t2 = "Task#2 Test#4";
+        System.out.println(":Expected Output: LCA(20,25)=20");
+        out = Task2.lowestCommonAncestor(root, 20, 25);
+        System.out.println(":  Your Output  : LCA(20,25)="+out);
+        if(out==null || out!=20) failedPrint(t2);
+        else successPrint(t2);
+        
         System.out.println("------------------------------");
         // Test Case 5 (10,12)
-        // TO DO
+        t2 = "Task#2 Test#5";
+        System.out.println(":Expected Output: LCA(10,12)=10");
+        out = Task2.lowestCommonAncestor(root, 10, 12);
+        System.out.println(":  Your Output  : LCA(10,12)="+out);
+        if(out==null || out!=10) failedPrint(t2);
+        else successPrint(t2);
+        
         System.out.println("------------------------------");
     }
     
@@ -153,14 +181,18 @@ public class BinarySearchTreeTester {
         BSTNode root = new BSTNode(30);
         root.left = new BSTNode(10);
         root.left.left = new BSTNode(3);
+        
         // CONSTRUCT THE REST OF THE TREE ON YOUR OWN
         // FROM THE EXAMPLE SHOWN IN THE QUESTION
-        // TO DO
-        
+        root.left.right = new BSTNode(15);
+        root.right = new BSTNode(40);
+        root.right.left = new BSTNode(35);
+        root.right.right = new BSTNode(55);
 
         //The following 2 lines print the binary tree. So no need to change it
         System.out.println("::Given Binary Tree::");
         BSTPrinter.printNode(root);
+        
         //The following lines tests the code. So no need to change it
         System.out.println("----------------------Test1----------------------");
         String exp = "30 10 15";
@@ -170,7 +202,7 @@ public class BinarySearchTreeTester {
         String out = Task3.findPath(root, 15);
         System.out.println(out);
         System.out.print(normal);
-        if( out!=null && exp.equals( out.trim() ) ) successPrint("Task#2 Test1");
+        if( out!=null && exp.equals( out.trim() ) ) successPrint("Task#3 Test1");
         else failedPrint("Task#3 Test1");
 
         System.out.println("\n----------------------Test2----------------------");
@@ -181,7 +213,7 @@ public class BinarySearchTreeTester {
         out = Task3.findPath(root, 50);
         System.out.println(out);
         System.out.print(normal);
-        if( out!=null && exp.equals( out.trim() ) ) successPrint("Task#2 Test2");
+        if( out!=null && exp.equals( out.trim() ) ) successPrint("Task#3 Test2");
         else failedPrint("Task#3 Test2");
     }
     
@@ -327,7 +359,7 @@ public class BinarySearchTreeTester {
     }
 
     private static void successPrint(String task){
-        System.out.println(sucsFormat+"    "+task+" Success!! Output Matched!!!     "+endFormat);
+        System.out.println(sucsFormat+"    "+task+" Success!! Output Matched!!!      "+endFormat);
     }
     
     private static void failedPrint(String task){

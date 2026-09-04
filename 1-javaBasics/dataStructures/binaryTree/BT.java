@@ -9,6 +9,9 @@ public class BT {
         }
     }
 
+
+    // In BT, if we go for recursion, always set the base case root == null (recursion does not need temp variable for the root)
+    //If we go for loops, assign a temp/current variable as the root. So the root's value stays the same
     
     public static void main(String[] args){
         Node root = new Node(2);
