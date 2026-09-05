@@ -6,7 +6,7 @@ public class MinHeap {
 
     public MinHeap(int capacity) {
         this.capacity = capacity;
-        this.heap = new Integer[capacity + 1];  // +1 because we are using 1-based indexing (First index= 1)
+        this.heap = new Integer[capacity + 1];  // +1 because we are using 1-based indexing (First index= 1, index 0 will be null)
         this.size = 0;                          //Size will work as java index basically
     }
 

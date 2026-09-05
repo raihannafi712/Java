@@ -8,30 +8,26 @@ public class Task6 {
     // You can use extra helper private static methods as per need
     public static Boolean isBST(BSTNode root){
 
-        return isBST_helpter(root, null, null);
+        return BSTHelper(root, null, null);
+
     }
 
-    private static Boolean isBST_helpter(BSTNode root, Integer min, Integer max){
-        if(root==null){
+    private static Boolean BSTHelper(BSTNode root , Integer min , Integer max){
 
+        if (root == null) {
             return true;
         }
 
-        int main_val =(int)root.elem;
-
-        if(min != null && main_val <= min){
-
-            return false;
+        if ((min != null && root.elem <= min) ||(max != null && root.elem >= max ) ) {          //root <= min and root >= max automatically makes it false
+            return  false;
         }
-        if(max != null && main_val >= max){
+        //So far this node is ok and move to next subtree
 
-            return false;
-        }
+        //If either one of the returns is false that means one subtree has not followed the BST rule. So false
 
-        Boolean left = isBST_helpter(root.left,min,root.elem);
-        Boolean right=isBST_helpter(root.right,root.elem,max);
+        return BSTHelper(root.left, min, root.elem)                 //Go to LEFT child and the max of that subtree will be that root
+        && BSTHelper(root.right, root.elem, max);                   //Go to RIGHT child and the min of that subtree will be that root
 
-        return left && right;
     }
     //===============================================================
 

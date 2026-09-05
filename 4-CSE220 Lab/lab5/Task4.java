@@ -1,42 +1,34 @@
+import java.util.Arrays;
+
 public class Task4 {
 
     public static int[] taskDist(int[] tasks, int m) {
+
         MinHeap minHeap = new MinHeap(m);
 
-        int i = 0;
-        while (i < m) {
+
+        for (int i = 0; i < m; i++) {
+            
             minHeap.insert(0);
-            i = i + 1;
         }
 
-        int temp = 0;
-        while (temp < tasks.length) {
+        for (int i = 0; i < tasks.length; i++) {
+            
+            int lowest_load = minHeap.extractMin();         //Extract the smallest load from the heap.
+            int new_load = lowest_load + tasks[i];          //Add the task's processing time to this load.
 
-            int lowest_load = minHeap.extractMin();
-            int new_load = lowest_load + tasks[temp];
-            minHeap.insert(new_load);
+            minHeap.insert(new_load);                       //Reinsert the updated load into the heap.
 
-            temp = temp + 1;
         }
 
-        return minHeap.toArray();
-    }
+        int new_arr[] = new int[m];
 
-
-
-
-    private static void printArray(int[] array) {
-        System.out.print("[");
-        int i = 0;
-
-        while (i < array.length) {
-            System.out.print(array[i]);
-            if (i < array.length - 1) {
-                System.out.print(", ");
-            }
-            i = i + 1;
+        for (int i = 0; i < new_arr.length; i++) {
+            
+            new_arr[i] = minHeap.extractMin();
         }
-        System.out.println("]");
+
+        return new_arr;
     }
 
 
@@ -49,6 +41,6 @@ public class Task4 {
         int[] result = taskDist(tasks, m);
 
         System.out.print("Output: ");
-        printArray(result);
+        System.out.println(Arrays.toString(result));
     }
 }

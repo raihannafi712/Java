@@ -18,10 +18,12 @@ public class Task4 {
             total += rangeSum(root.left, low, high);
             total += rangeSum(root.right, low, high);
 
-        } else if (low < root.elem) {                             // Node is greater than high. It's too big, so we only search the left subtree.
+        //If the element is not high >= root.elem and only low <= root.elem, then
+        } else if (low < root.elem) {                               // Node is greater than high. It's too big, so we only search the left subtree.
             
             total += rangeSum(root.left, low, high);
 
+        //If the element is not low <= root and only high >= root.elem, then
         }else {                                                     // Node is smaller than low. It's too small, so we only search the right subtree.
             total += rangeSum(root.right, low, high);               
         }

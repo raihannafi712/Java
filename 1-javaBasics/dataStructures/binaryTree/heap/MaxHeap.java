@@ -10,9 +10,6 @@
             this.size = 0;
         }
 
-
-
-        //Insert
         public void insert(int val){
             if (size >= capacity) {     
                 System.out.println("Heap is full");
@@ -134,28 +131,5 @@
             }
 
             return false;
-        }
-
-
-
-
-        //Sorts an array from low to high (ascending order) - Maxheap
-        public static void outPlaceHeapsort(Integer[] arr){
-
-            if (arr.length == 0) {
-                return;
-            }
-
-            MaxHeap heap = new MaxHeap(arr.length);                 //Suppose, Capacity = 4 , heap.length = 5
-
-            for (int i = 0; i < arr.length; i++) {
-                
-                heap.insert(arr[i]);                                //all the elemets are inserted and sorted as maxHeap in the heap in each addition
-            }
-
-            for (int i = (arr.length - 1); i >= 0; i--) {
-                
-                arr[i] = heap.extractMax();                         //From the last index of the array, greatest number will keep being added
-            }
         }
     }
